@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "app"
+version = "0.1.0"
+description = ""
+authors = ["Augusto Marinho <augusto.marinho@loggi.com>"]
+readme = "README.md"
+
+[tool.poetry.scripts]
+start = "app.main:start"
+
+[tool.poetry.dependencies]
+python = "3.11"
+fastapi = "0.98.0"
+sqlalchemy = "2.0.17"
+alembic = "1.11.1"
+uvicorn = "0.22.0"
+fastapi-healthcheck = "0.2.12"
+httpx = "^0.24.1"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.0"
+pytest-mock = "^3.11.1"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.3.0"
+isort = "^5.12.0"
+flake8 = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
