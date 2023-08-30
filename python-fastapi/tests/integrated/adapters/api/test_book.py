@@ -1,5 +1,6 @@
-from app.main import app, create_routes
 from starlette.testclient import TestClient
+
+from app.main import app, create_routes
 
 client = TestClient(app)
 create_routes()
