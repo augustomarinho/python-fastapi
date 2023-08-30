@@ -9,7 +9,7 @@ readme = "README.md"
 start = "app.main:start"
 
 [tool.poetry.dependencies]
-python = "3.11"
+python = "3.11.5"
 fastapi = "0.98.0"
 sqlalchemy = "2.0.17"
 alembic = "1.11.1"
