@@ -17,6 +17,7 @@ uvicorn = "0.22.0"
 fastapi-healthcheck = "0.2.12"
 httpx = "^0.24.1"
 pydantic = "^2.3.0"
+pydantic-settings = "^2.0.3"
 
 
 [tool.poetry.group.test.dependencies]
