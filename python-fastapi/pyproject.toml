@@ -10,12 +10,13 @@ start = "app.main:start"
 
 [tool.poetry.dependencies]
 python = "3.11.5"
-fastapi = "0.98.0"
+fastapi = "0.103.0"
 sqlalchemy = "2.0.17"
 alembic = "1.11.1"
 uvicorn = "0.22.0"
 fastapi-healthcheck = "0.2.12"
 httpx = "^0.24.1"
+pydantic = "^2.3.0"
 
 
 [tool.poetry.group.test.dependencies]
