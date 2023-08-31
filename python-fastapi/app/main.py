@@ -2,9 +2,13 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi_healthcheck import HealthCheckFactory, healthCheckRoute
 
-from app.adapters.entrypoints.http.v1.book import BookV1API
 from app.adapters.entrypoints.http.fastapi_router import (
-    FastAPIRouterController,
+    FastAPIRouterController
+)
+
+from app.adapters.entrypoints.http.v1.book_router import BookV1API
+from app.adapters.entrypoints.http.v1.settings_router import (
+    router as settings_router
 )
 
 app = FastAPI()
@@ -20,6 +24,7 @@ def create_health_route():
 
 def create_routes():
     BookV1API(FastAPIRouterController(app))
+    app.include_router(settings_router)
 
 
 def start():

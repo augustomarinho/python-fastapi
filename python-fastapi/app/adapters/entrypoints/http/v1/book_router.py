@@ -1,10 +1,10 @@
 from fastapi import Response, status
 
 import app.adapters.entrypoints.http.http as http
-from app.adapters.entrypoints.http.v1 import book_dto
 from app.adapters.entrypoints.http.fastapi_router import (
-    FastAPIRouterController,
+    FastAPIRouterController
 )
+from app.adapters.entrypoints.http.v1 import book_dto
 
 
 class BookV1API:
