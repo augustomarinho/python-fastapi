@@ -1,0 +1,16 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: fastapi-python-db
+    environment:
+      POSTGRES_USER: ${APP_DB_USER}
+      POSTGRES_PASSWORD: ${APP_DB_PASSWORD}
+      POSTGRES_DB: ${APP_DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-fastapi-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-fastapi-data:
