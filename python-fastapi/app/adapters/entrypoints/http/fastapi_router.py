@@ -1,4 +1,8 @@
-from typing import Any, Callable, List
+from typing import (
+    Any,
+    Callable,
+    List,
+)
 
 from fastapi import APIRouter, FastAPI
 from fastapi.datastructures import Default
