@@ -34,3 +34,25 @@ poetry run test
 ```bash
 poetry run black --check . && poetry run isort --check . && poetry run flake8 .
 ```
+
+# Alembic
+Alembic was initialize with the command:
+```bash
+poetry run alembic init infrastructure/alembic/migrations
+```
+
+# Alembic Migrations
+Create migrations
+```bash
+poetry run alembic revision -m "create book table"
+```
+
+Execute migrations
+```bash
+poetry run alembic upgrade head
+```
+
+List migrations history
+```bash
+poetry run alembic history --verbose
+```

@@ -1,11 +1,12 @@
 from functools import lru_cache
+from typing import Optional
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class DBSettings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_prefix="APP_", env_file=".env", env_file_encoding="utf-8"
+        env_prefix="APP_", env_file=".env", env_file_encoding="utf-8", extra="ignore"
     )
 
     # Database configuration
@@ -17,5 +18,8 @@ class DBSettings(BaseSettings):
 
 
 @lru_cache
-def get_db_settings() -> DBSettings:
-    return DBSettings()
+def get_db_settings(env: Optional[str] = None) -> DBSettings:
+    if env is None:
+        return DBSettings()
+
+    return DBSettings(_env_file=f".env.{env}")
