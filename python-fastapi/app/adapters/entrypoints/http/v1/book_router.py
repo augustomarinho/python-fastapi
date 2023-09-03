@@ -26,7 +26,7 @@ def read_book(
         self, book_id: int, response: Response
 ) -> book_dto.CreateBookV1Response:
     response.status_code = status.HTTP_200_OK
-    return book_dto.CreateBookV1Response(book_isbn=book_id)
+    return book_dto.CreateBookV1Response(book_isbn=str(book_id))
 
 
 # def create_book(
