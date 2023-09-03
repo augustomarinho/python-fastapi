@@ -1,6 +1,7 @@
 from dependency_injector import containers, providers
 from sqlalchemy import create_engine, URL
 
+from app.adapters.repositories.book_repository import BookRepository
 from app.infrastructure.settins import get_db_settings
 
 
@@ -23,3 +24,5 @@ class Container(containers.DeclarativeContainer):
         ),
         isolation_level="AUTOCOMMIT",
     )
+
+    book_port = providers.Factory(BookRepository, db=db_engine)

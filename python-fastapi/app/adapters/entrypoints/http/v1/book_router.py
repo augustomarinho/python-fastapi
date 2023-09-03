@@ -1,8 +1,12 @@
-from fastapi import Response, status, APIRouter
+from dependency_injector.wiring import Provide, inject
+from fastapi import Response, status, APIRouter, Depends
 
+from app.adapters.entrypoints.http import http
 from app.adapters.entrypoints.http.v1 import book_dto
+from app.domain.ports.book_ports import BookPort
+from app.infrastructure.depency_injection import Container
 
-router1 = APIRouter(prefix="/v1")
+router1 = APIRouter()
 
 
 @router1.get("/api/v1/books",
@@ -29,15 +33,20 @@ def read_book(
     return book_dto.CreateBookV1Response(book_isbn=str(book_id))
 
 
-# def create_book(
-#         self,
-#         create_book_request: book_dto.CreateBookV1Request,
-#         response: Response,
-# ) -> book_dto.CreateBookV1Response:
-#     response.status_code = status.HTTP_201_CREATED
-#     response.headers[
-#         http.HEADER_CONTENT_TYPE
-#     ] = http.HEADER_CONTENT_TYPE_APPLICATION_JSON
-#     return book_dto.CreateBookV1Response(
-#         book_isbn=create_book_request.book_isbn
-#     )
+@router1.post("/api/v1/books",
+            response_model=book_dto.CreateBookV1Response
+            )
+@inject
+def create_book(
+        self,
+        create_book_request: book_dto.CreateBookV1Request,
+        response: Response,
+        book_port: BookPort = Depends(Provide[Container.book_port]),
+) -> book_dto.CreateBookV1Response:
+    response.status_code = status.HTTP_201_CREATED
+    response.headers[
+        http.HEADER_CONTENT_TYPE
+    ] = http.HEADER_CONTENT_TYPE_APPLICATION_JSON
+    return book_dto.CreateBookV1Response(
+        book_isbn=create_book_request.book_isbn
+    )
