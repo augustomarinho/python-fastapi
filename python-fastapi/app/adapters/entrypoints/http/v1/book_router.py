@@ -4,7 +4,7 @@ from fastapi import Response, status, APIRouter, Depends
 from app.adapters.entrypoints.http import http
 from app.adapters.entrypoints.http.v1 import book_dto
 from app.domain.ports.book_ports import BookPort
-from app.infrastructure.depency_injection import Container
+from app.configs.depency_injection import Container
 
 router1 = APIRouter()
 

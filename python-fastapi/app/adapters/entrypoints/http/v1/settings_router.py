@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from typing_extensions import Annotated
 
-from app.infrastructure.settins import DBSettings, get_db_settings
+from app.configs.settins import DBSettings, get_db_settings
 
 router = APIRouter(prefix="/v1")
 

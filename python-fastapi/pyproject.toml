@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Augusto Marinho <augusto.marinho@loggi.com>"]
 readme = "README.md"
-
+packages = [{ include = "app"}]
 [tool.poetry.scripts]
 start = "app.main:start"
 
