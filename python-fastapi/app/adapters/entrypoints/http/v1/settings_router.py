@@ -10,4 +10,4 @@ router = APIRouter(prefix="/v1")
 async def read_settings(
     settings: Annotated[DBSettings, Depends(get_db_settings)]
 ):
-    return {"db_name": settings.db_name, "db_host": settings.db_host}
+    return {"db_name": settings.db_dsn}

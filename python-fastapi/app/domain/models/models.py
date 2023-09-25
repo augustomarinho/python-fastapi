@@ -1,14 +1,10 @@
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, DateTime
+from dataclasses import Field
 from datetime import datetime
 
-Base = declarative_base()
+from pydantic import BaseModel
 
-class BaseDateModel(Base):
-    __abstract__ = True  # Set this to True to make it an abstract base model
 
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+class BaseDateModel(BaseModel):
 
-    def __repr__(self):
-        return f"<{self.__class__.__name__}(id={self.id})>"
+    created_at: datetime = Field(..., description="Date of creation.")
+    updated_at: datetime = Field(..., description="Date of last update.")

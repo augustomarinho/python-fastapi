@@ -10,10 +10,10 @@ router1 = APIRouter()
 
 
 @router1.get("/api/v1/books",
-            response_model=book_dto.CreateBookV1ListResponse
-            )
+             response_model=book_dto.CreateBookV1ListResponse
+             )
 async def read_all_book(
-        self, response: Response
+        response: Response
 ) -> book_dto.CreateBookV1ListResponse:
     list_book = [
         book_dto.CreateBookV1Response(book_isbn="123"),
@@ -24,21 +24,21 @@ async def read_all_book(
 
 
 @router1.get("/api/v1/books/{book_id}",
-            response_model=book_dto.CreateBookV1Response
-            )
+             response_model=book_dto.CreateBookV1Response
+             )
 def read_book(
-        self, book_id: int, response: Response
+        book_id: int,
+        response: Response
 ) -> book_dto.CreateBookV1Response:
     response.status_code = status.HTTP_200_OK
     return book_dto.CreateBookV1Response(book_isbn=str(book_id))
 
 
 @router1.post("/api/v1/books",
-            response_model=book_dto.CreateBookV1Response
-            )
+              response_model=book_dto.CreateBookV1Response
+              )
 @inject
 def create_book(
-        self,
         create_book_request: book_dto.CreateBookV1Request,
         response: Response,
         book_port: BookPort = Depends(Provide[Container.book_port]),

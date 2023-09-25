@@ -1,5 +1,5 @@
 from dependency_injector import containers, providers
-from sqlalchemy import create_engine, URL
+from sqlalchemy.ext.asyncio import create_async_engine
 
 from app.adapters.repositories.book_repository import BookRepository
 from app.configs.settins import get_db_settings
@@ -13,15 +13,10 @@ class Container(containers.DeclarativeContainer):
     config.from_dict(get_db_settings().model_dump())
 
     db_engine = providers.Singleton(
-        create_engine,
-        URL.create(
-            drivername="postgresql",
-            username=config.get("db_user"),
-            password=config.get("db_password"),
-            host=config.get("db_host"),
-            port=config.get("db_port"),
-            database=config.get("db_name"),
-        ),
+        create_async_engine,
+        config.get("db_dsn"),
+        pool_size=config.get("db_max_pool_size"),
+        max_overflow=config.get("db_overflow_size"),
         isolation_level="AUTOCOMMIT",
     )
 

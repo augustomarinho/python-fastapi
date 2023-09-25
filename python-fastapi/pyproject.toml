@@ -20,6 +20,7 @@ pydantic = "^2.3.0"
 pydantic-settings = "^2.0.3"
 dependency-injector = "^4.41.0"
 psycopg2 = "^2.9.7"
+asyncpg = "^0.28.0"
 
 
 [tool.poetry.group.test.dependencies]

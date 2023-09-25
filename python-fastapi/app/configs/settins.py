@@ -15,6 +15,7 @@ class DBSettings(BaseSettings):
     db_user: str
     db_password: str
     db_name: str
+    db_dsn: str
 
 
 @lru_cache
