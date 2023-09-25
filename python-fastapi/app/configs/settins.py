@@ -16,6 +16,8 @@ class DBSettings(BaseSettings):
     db_password: str
     db_name: str
     db_dsn: str
+    db_overflow_size: int = 10
+    db_max_pool_size: int = 5
 
 
 @lru_cache

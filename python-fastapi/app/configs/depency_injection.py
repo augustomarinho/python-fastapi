@@ -20,4 +20,4 @@ class Container(containers.DeclarativeContainer):
         isolation_level="AUTOCOMMIT",
     )
 
-    book_port = providers.Factory(BookRepository, db=db_engine)
+    book_port = providers.Factory(BookRepository, db_engine=db_engine)

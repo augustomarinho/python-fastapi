@@ -1,20 +1,22 @@
 from abc import ABC, abstractmethod
 
+from app.domain.models.book_model import Book
+
 
 class BookPort(ABC):
 
     @abstractmethod
-    def get_book_by_id(self, book_id: int):
+    async def get_book_by_id(self, book_id: int) -> Book | None:
         pass
 
     @abstractmethod
-    def create_book(self, book):
+    async def create_book(self, book: Book) -> Book:
         pass
 
     @abstractmethod
-    def update_book(self, book):
+    async def update_book(self, book: Book) -> Book | None:
         pass
 
     @abstractmethod
-    def delete_book(self, book_id: int):
+    async def delete_book(self, book_id: int):
         pass
