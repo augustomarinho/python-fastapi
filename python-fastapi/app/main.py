@@ -1,11 +1,9 @@
-import os
-
 import uvicorn
 from fastapi import FastAPI
 from fastapi_healthcheck import HealthCheckFactory, healthCheckRoute
 
-from app.adapters.entrypoints.http.v1.book_router import router1 as book_router
-from app.adapters.entrypoints.http.v1.settings_router import router as settings_router
+from app.adapters.entrypoints.rest.v1.book import router1 as book_router
+from app.adapters.entrypoints.rest.v1.settings import router as settings_router
 from app.configs.depency_injection import Container
 
 
@@ -38,5 +36,4 @@ def start():
 app = create_app()
 
 if __name__ == "__main__":
-    print("Path to .env File:", os.environ.get("DOTENV_PATH"))
     start()

@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from app.domain.models.book_model import Book
+from app.domain.models.book import Book
 
 
 class BookPort(ABC):

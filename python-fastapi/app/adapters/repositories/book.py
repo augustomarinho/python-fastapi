@@ -2,7 +2,7 @@ from datetime import datetime
 
 from sqlalchemy import Engine, text
 
-from app.domain.models.book_model import Book
+from app.domain.models.book import Book
 from app.domain.ports.book_ports import BookPort
 
 
