@@ -1,4 +1,22 @@
-# FastAPI Hexagonal Architecture
+<div align="center">
+<h1>FastAPI Hexagonal Architecture</h1>
+<div>
+    <img src="https://img.shields.io/badge/FastAPI-Python%203.11-blue.svg" alt="FastAPI supports Python 3.11"/>    
+    <a href="https://python-poetry.org/"><img src="https://img.shields.io/badge/maintained%20with-poetry-rgb(30%2041%2059).svg" alt="poetry"/></a>
+</div>
+</div>
+
+<p>This project was created to study the concepts of the Hexagonal Architecture using Python and FastAPI.</p>
+<br>
+
+* [Installation](#installation)
+    * [Poetry](#poetry)
+    * [dependencies](#dependencies)
+    * [Running](#running)
+        * [Standalone](#standalone)
+        * [Web](#web)
+    * [Testing](#testing)
+    * [Locust](#locust)
 
 # Init
  Install pyenv https://github.com/pyenv/pyenv#installation
@@ -15,7 +33,7 @@ pyenv virtualenv 3.11.0 python-fastapi
 pyenv activate python-fastapi
 ```
 
-# Install dependecies
+# Install dependencies
 ```bash
 poetry install
 ```
