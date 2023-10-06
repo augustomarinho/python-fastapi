@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy import Engine, text
 
 from app.domain.models.book import Book
-from app.domain.ports.book_ports import BookPort
+from app.domain.ports.book import BookPort
 
 
 class BookRepository(BookPort):

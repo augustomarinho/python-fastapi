@@ -8,7 +8,7 @@ from app.adapters.entrypoints.rest.v1.model import book
 from app.adapters.entrypoints.rest.v1.model.book import CreateBookV1Response, CreateBookV1ListResponse, \
     CreateBookV1Request
 from app.domain.models.book import Book
-from app.domain.ports.book_ports import BookPort
+from app.domain.ports.book import BookPort
 from app.configs.depency_injection import Container
 
 router1 = APIRouter()
