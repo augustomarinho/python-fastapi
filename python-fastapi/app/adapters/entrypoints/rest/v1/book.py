@@ -11,12 +11,12 @@ from app.domain.models.book import Book
 from app.domain.ports.book import BookPort
 from app.configs.depency_injection import Container
 
-router1 = APIRouter()
+router = APIRouter()
 
 
-@router1.get("/api/v1/books",
-             response_model=CreateBookV1ListResponse
-             )
+@router.get("/api/v1/books",
+            response_model=CreateBookV1ListResponse
+            )
 async def read_all_book(
         response: Response
 ) -> CreateBookV1ListResponse:
@@ -28,9 +28,9 @@ async def read_all_book(
     return book.CreateBookV1ListResponse(books=list_book)
 
 
-@router1.get("/api/v1/books/{book_id}",
-             response_model=CreateBookV1Response
-             )
+@router.get("/api/v1/books/{book_id}",
+            response_model=CreateBookV1Response
+            )
 @inject
 async def read_book(
         book_id: int,
@@ -47,9 +47,9 @@ async def read_book(
         return CreateBookV1Response()
 
 
-@router1.post("/api/v1/books",
-              response_model=CreateBookV1Response
-              )
+@router.post("/api/v1/books",
+             response_model=CreateBookV1Response
+             )
 @inject
 async def create_book(
         create_book_request: CreateBookV1Request,

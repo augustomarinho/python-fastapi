@@ -2,7 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi_healthcheck import HealthCheckFactory, healthCheckRoute
 
-from app.adapters.entrypoints.rest.v1.book import router1 as book_router
+from app.adapters.entrypoints.rest.v1.book import router as book_router
 from app.adapters.entrypoints.rest.v1.settings import router as settings_router
 from app.configs.depency_injection import Container
 
