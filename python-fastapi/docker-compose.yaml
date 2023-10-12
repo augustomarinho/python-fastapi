@@ -1,7 +1,7 @@
 version: '3'
 services:
   postgres:
-    image: postgres:latest
+    image: postgres:15.4
     container_name: fastapi-python-db
     environment:
       POSTGRES_USER: ${APP_DB_USER}
@@ -11,6 +11,12 @@ services:
       - "5432:5432"
     volumes:
       - postgres-fastapi-data:/var/lib/postgresql/data
+    networks:
+      - postgres-fastapi-net
 
 volumes:
   postgres-fastapi-data:
+
+networks:
+  postgres-fastapi-net:
+    driver: bridge
