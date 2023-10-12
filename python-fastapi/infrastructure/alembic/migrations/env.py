@@ -18,9 +18,12 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 # Get url setting from application settings
+
 settings = get_db_settings(x_arguments.get("env"))
 dsn = settings.db_dsn
-config.set_main_option("sqlalchemy.url", dsn)
+
+if config.get_main_option("sqlalchemy.url") is None:
+    config.set_main_option("sqlalchemy.url", dsn)
 
 # add your model's MetaData object here
 # for 'autogenerate' support
