@@ -1,11 +1,14 @@
+from datetime import datetime
 from typing import Optional
 
-from app.domain.models.models import BaseDateModel
+from pydantic import BaseModel
 
 
-class Book(BaseDateModel):
+class Book(BaseModel):
 
     id: Optional[int] = None
+    created_at: Optional[datetime] = None
+    updated_at: Optional[datetime] = None
     name: str
     author: str
     isbn: str
