@@ -29,7 +29,7 @@ pytest-mock = "^3.11.1"
 
 [tool.pytest.ini_options]
 filterwarnings = [
-    "ignore:.*The `__fields__` attribute is deprecated:DeprecationWarning",
+    "ignore::DeprecationWarning",
 ]
 
 
