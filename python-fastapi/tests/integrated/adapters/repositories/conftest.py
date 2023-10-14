@@ -3,6 +3,7 @@ import asyncio
 import pytest
 from alembic import command
 from alembic.config import Config
+from sqlalchemy import text
 from sqlalchemy.ext.asyncio import create_async_engine
 from testcontainers.postgres import PostgresContainer
 
@@ -24,9 +25,14 @@ def postgres_container():
 
 
 @pytest.fixture(scope="module")
-def async_engine(event_loop, postgres_container):
+def db_engine(postgres_container):
     db_uri = postgres_container.get_connection_url()
-    engine = create_async_engine(db_uri, isolation_level="AUTOCOMMIT")
+    return create_async_engine(db_uri, isolation_level="AUTOCOMMIT")
+
+
+@pytest.fixture(scope="module")
+def async_engine(event_loop, postgres_container, db_engine):
+    db_uri = postgres_container.get_connection_url()
 
     # Set up Alembic configuration to use for tests
     alembic_config = Config()
@@ -36,6 +42,17 @@ def async_engine(event_loop, postgres_container):
     # Apply migrations
     command.upgrade(alembic_config, "head")
 
-    yield engine
+    yield db_engine
 
-    event_loop.run_until_complete(engine.dispose())
+    event_loop.run_until_complete(db_engine.dispose())
+
+
+@pytest.fixture(scope="function", autouse=True)
+def setup_and_teardown(event_loop, db_engine):
+    async def setup():
+        async with db_engine.connect() as conn:
+            await conn.execute(text("TRUNCATE TABLE books RESTART IDENTITY"))
+
+    yield None
+
+    event_loop.run_until_complete(setup())
