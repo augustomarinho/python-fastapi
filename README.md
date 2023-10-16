@@ -9,7 +9,7 @@
 <p>This project was created to study the concepts of the Hexagonal Architecture using Python and FastAPI.</p>
 <br>
 
-* [Init](#init)
+* [First Step](#first-step)
 * [Entry in project dir](#entry-in-project-dir)
 * [Create environment](#create-environment)
 * [Install dependencies](#install-dependencies)
@@ -20,10 +20,10 @@
 * [Alembic Migrations](#alembic-migrations)
 
 
-# Init
- * Install pyenv: https://github.com/pyenv/pyenv#installation
- * Install Docker: https://docs.docker.com/get-docker/
- * Install Poetry: https://python-poetry.org/docs/#installation
+# First Step
+ * **Install Docker**: https://docs.docker.com/get-docker/
+ * **Install Pyenv**: https://github.com/pyenv/pyenv#installation
+ * **Install Poetry**: https://python-poetry.org/docs/#installation
 
 # Entry in project dir
 ```bash
